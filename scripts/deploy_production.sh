@@ -1,14 +1,12 @@
-
 #!/bin/bash
 
 echo "Deploying to production..."
 
-scp app.py jenkins@ip-172-31-5-113:/var/lib/jenkins/production/
+# Copy the app to production directory locally
+cp app.py /var/lib/jenkins/production/
 
-ssh jenkins@ip-172-31-5-113<< 'EOF'
+# Kill any running instance of app.py
+pkill -f "python3 /var/lib/jenkins/production/app.py"
 
-    pkill -f "python3 app.py"
-
-    nohup python3 /var/lib/jenkins/production/app.py > /var/lib/jenkins/production/app.log 2>&1 &
-
-EOF
+# Restart the app in background and log output
+nohup python3 /var/lib/jenkins/production/app.py > /var/lib/jenkins/production/app.log 2>&1 &
