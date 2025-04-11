@@ -3,7 +3,7 @@
 
 echo "Deploying to production..."
 
-scp app.py user@production-server:/var/www/production/
+scp app.py jenkins@ip-172-31-5-113:/var/lib/jenkins/production/
 
-ssh user@production-server 'sudo systemctl restart flask-production'
+ssh jenkins@ip-172-31-5-113 'sudo systemctl restart flask-production'
 
