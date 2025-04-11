@@ -9,7 +9,7 @@ ssh jenkins_slave@ip-172-31-5-113<< 'EOF'
 
     pkill -f "python3 app.py"
 
-    nohup python3 /var/www/staging/app.py > /var/www/staging/app.log 2>&1 &
+    nohup python3 /home/jenkins_slave/staging/app.py > /home/jenkins_slave/staging/app.log 2>&1 &
 
 EOF
 
